@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="getSchools($event)" placeholder="School Name or Address" #input>
+  <input matInput (keyup)="filterSchools($event)" placeholder="School Name or Address" #input>
 </mat-form-field>
 
 <div class="mat-elevation-z8">
@@ -33,3 +33,5 @@
     </tr>
   </table>
 </div>
+<br>
+<a href="#" *ngIf="hasLoadMore" (click)="loadMore()">Load More</a>
