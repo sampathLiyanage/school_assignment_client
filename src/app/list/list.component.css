@@ -2,6 +2,10 @@ table {
   width: 100%;
 }
 
+.table-holder {
+  min-height: 400px;
+}
+
 .mat-form-field {
   font-size: 14px;
   width: 100%;
@@ -9,4 +13,20 @@ table {
 
 td, th {
   width: 25%;
+}
+
+.table-top-bar, .button-row {
+  display: flex;
+}
+
+.button-row > button {
+  margin: 10px 10px 10px 0px;
+}
+
+mat-sidenav, mat-sidenav-content {
+  padding: 10px;
+}
+
+#addButton {
+  margin-right: 10px;
 }

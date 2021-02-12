@@ -15,12 +15,14 @@ export class ListComponent implements OnInit {
   hasLoadMore: boolean;
   pageOffset: number;
   latestFilter: string;
+  addFormShown: boolean;
 
   constructor(private apiService: ApiService) {
     this.schools = [];
     this.hasLoadMore = false;
     this.pageOffset = 0;
     this.latestFilter = '';
+    this.addFormShown = false;
   }
 
   getSchools(searchString?: string, append: boolean = false): void {
