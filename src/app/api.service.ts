@@ -13,6 +13,10 @@ export class ApiService {
 
   public getSchools(filterValue?: string): Observable<School[]>{
     filterValue = filterValue ? '?' + filterValue : '';
-    return this.http.get<School[]>(ConfigService.SERVER_API_URL + filterValue);
+    return this.http.get<School[]>(ConfigService.SERVER_API_URL + '/schools' + filterValue);
+  }
+
+  public addSchool(school: School): Observable<School[]>{
+    return this.http.post<School[]>(ConfigService.SERVER_API_URL + '/schools', school);
   }
 }

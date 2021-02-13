@@ -1,18 +1,25 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" [(opened)]="addFormShown">
     <div class="mat-elevation-z1">
-      <form class="example-form">
+      <form [formGroup]="addSchoolForm" (ngSubmit)="addSchool()" class="example-form">
         <h1>Add School</h1>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Name</mat-label>
-          <input matInput>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="addSchoolForm.get('name').invalid">invalid</mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
+        <mat-form-field>
           <mat-label>Address</mat-label>
-          <textarea matInput></textarea>
+          <textarea matInput formControlName="address"></textarea>
+          <mat-error *ngIf="addSchoolForm.get('address').invalid">invalid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>No of Students</mat-label>
+          <input matInput formControlName="noOfStudents">
+          <mat-error *ngIf="addSchoolForm.get('noOfStudents').invalid">invalid</mat-error>
         </mat-form-field>
         <div class="button-row">
-          <button mat-flat-button color="primary" >Save</button>
+          <button type="submit" mat-flat-button color="primary" >Save</button>
           <button mat-flat-button color="accent" (click)="addFormShown=false">Cancel</button>
         </div>
       </form>
