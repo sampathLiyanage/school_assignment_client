@@ -2,6 +2,10 @@ table {
   width: 100%;
 }
 
+table tr > td {
+  word-break: break-word;
+}
+
 .table-holder {
   min-height: 400px;
 }
