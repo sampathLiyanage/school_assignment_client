@@ -30,3 +30,7 @@ mat-sidenav, mat-sidenav-content {
 #addButton {
   margin-right: 10px;
 }
+
+mat-form-field {
+  padding-bottom: 10px;
+}

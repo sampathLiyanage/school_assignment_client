@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {School} from '../app.school';
 import {ApiService} from '../api.service';
 import {ConfigService} from '../config.service';
-import {FormBuilder, FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, NgForm, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ValidationMessagesService} from '../validation-messages.service';
 
 @Component({
   selector: 'app-list',
@@ -17,8 +19,12 @@ export class ListComponent implements OnInit {
   pageOffset: number;
   latestFilter: string;
   addFormShown: boolean;
+  validationMessagesService = ValidationMessagesService;
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder) {
+  constructor(
+    private apiService: ApiService,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar) {
     this.schools = [];
     this.hasLoadMore = false;
     this.pageOffset = 0;
@@ -28,12 +34,10 @@ export class ListComponent implements OnInit {
 
   addSchoolForm = this.formBuilder.group({
     name: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(100)
+      Validators.required
     ]),
     address: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(1000)
+      Validators.required
     ]),
     noOfStudents: new FormControl('', [
       Validators.pattern('^[0-9]*$')
@@ -65,12 +69,25 @@ export class ListComponent implements OnInit {
     this.getSchools(this.latestFilter, true);
   }
 
-  addSchool(): void {
-    console.log(this.addSchoolForm.value);
-    this.apiService.addSchool(this.addSchoolForm.value as School)
-      .subscribe(school => {
-        console.log(school);
-      });
+  addSchool(form: any): void {
+    if (form.valid) {
+      if (!this.addSchoolForm.value.noOfStudents) {
+        delete this.addSchoolForm.value.noOfStudents;
+      }
+      this.apiService.addSchool(this.addSchoolForm.value as School)
+        .subscribe(school => {
+          this.snackBar.open('Successfully Saved', '', {
+              duration: 2000
+            }
+          );
+          this.addFormShown = false;
+          form.resetForm();
+        });
+    }
+  }
+
+  getValidationMessageService(): ValidationMessagesService{
+    return ValidationMessagesService;
   }
 
   ngOnInit(): void {

@@ -1,22 +1,22 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" [(opened)]="addFormShown">
     <div class="mat-elevation-z1">
-      <form [formGroup]="addSchoolForm" (ngSubmit)="addSchool()" class="example-form">
+      <form #addForm="ngForm" [formGroup]="addSchoolForm" (ngSubmit)="addSchool(addForm)" class="example-form">
         <h1>Add School</h1>
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
-          <mat-error *ngIf="addSchoolForm.get('name').invalid">invalid</mat-error>
+          <input matInput formControlName="name" maxlength="100">
+          <mat-error *ngIf="addSchoolForm.get('name')!.invalid && addSchoolForm.get('name')!.errors!.required">{{validationMessagesService.REQUIRED}}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Address</mat-label>
-          <textarea matInput formControlName="address"></textarea>
-          <mat-error *ngIf="addSchoolForm.get('address').invalid">invalid</mat-error>
+          <textarea matInput formControlName="address" maxlength="1000"></textarea>
+          <mat-error *ngIf="addSchoolForm.get('address')!.invalid && addSchoolForm.get('address')!.errors!.required">{{validationMessagesService.REQUIRED}}</mat-error>
         </mat-form-field>
         <mat-form-field>
           <mat-label>No of Students</mat-label>
           <input matInput formControlName="noOfStudents">
-          <mat-error *ngIf="addSchoolForm.get('noOfStudents').invalid">invalid</mat-error>
+          <mat-error *ngIf="addSchoolForm.get('noOfStudents')!.invalid && addSchoolForm.get('noOfStudents')!.errors!.pattern">{{validationMessagesService.POSITIVE_INTEGER}}</mat-error>
         </mat-form-field>
         <div class="button-row">
           <button type="submit" mat-flat-button color="primary" >Save</button>
@@ -28,7 +28,7 @@
   <mat-sidenav-content>
     <div class="table-holder">
       <div class="table-top-bar">
-        <button *ngIf="!addFormShown" (click)="addFormShown=true" id="addButton" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <button title="Add School" *ngIf="!addFormShown" (click)="addFormShown=true" id="addButton" mat-fab color="primary" aria-label="Example icon button with a delete icon">
           <mat-icon>add</mat-icon>
         </button>
         <mat-form-field>
