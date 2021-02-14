@@ -1,0 +1,28 @@
+#addButton {
+  margin-right: 10px;
+}
+
+.table-top-bar {
+  display: flex;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+table {
+  width: 100%;
+}
+
+table tr > td {
+  word-break: break-word;
+}
+
+.table-holder {
+  min-height: 400px;
+}

@@ -1,32 +1,3 @@
-table {
-  width: 100%;
-}
-
-table tr > td {
-  word-break: break-word;
-}
-
-.table-holder {
-  min-height: 400px;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-
-td, th {
-  width: 25%;
-}
-
-.table-top-bar, .button-row {
-  display: flex;
-}
-
 mat-sidenav, mat-sidenav-content {
   padding: 10px;
-}
-
-#addButton {
-  margin-right: 10px;
 }

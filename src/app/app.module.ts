@@ -16,12 +16,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SchoolPageComponent } from './school-page/school-page.component';
 import { AddSchoolComponent } from './add-school/add-school.component';
+import { SchoolListComponent } from './school-list/school-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SchoolPageComponent,
-    AddSchoolComponent
+    AddSchoolComponent,
+    SchoolListComponent
   ],
   imports: [
     BrowserModule,
