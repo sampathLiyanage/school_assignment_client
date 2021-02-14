@@ -1,9 +1,9 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" [(opened)]="addFormShown">
-    <app-add-school (schoolSave)="addFormShown = false;  schoolList.refreshIfFirstPage(); schoolList.addButtonShown = true;" (cancelButtonClick)="addFormShown = false; schoolList.addButtonShown = true;"></app-add-school>
+    <app-add-school (schoolSave)="addFormShown = false;" (cancelButtonClick)="addFormShown = false;"></app-add-school>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-school-list #schoolList (addButtonClick)="addFormShown = true; schoolList.addButtonShown = false;" (filterFocus)="addFormShown = false; schoolList.addButtonShown = true;"></app-school-list>
+    <app-school-list [addButtonVisible]="!addFormShown" (addButtonClick)="addFormShown = true;" (filterFocus)="addFormShown = false;"></app-school-list>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

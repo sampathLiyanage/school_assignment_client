@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {School} from '../app.school';
 import {ApiService} from '../api.service';
 import {ConfigService} from '../config.service';
@@ -8,15 +8,15 @@ import {ConfigService} from '../config.service';
   templateUrl: './school-list.component.html',
   styleUrls: ['./school-list.component.css']
 })
-export class SchoolListComponent implements OnInit {
+export class SchoolListComponent implements OnInit, OnChanges {
 
   schools: School[];
   displayedColumns: string[] = ['name', 'address', 'noOfStudents'];
   hasLoadMore: boolean;
   pageOffset: number;
   latestFilter: string;
-  addButtonShown: boolean;
 
+  @Input() addButtonVisible!: boolean;
   @Output() addButtonClick = new EventEmitter<string>();
   @Output() filterFocus = new EventEmitter<string>();
 
@@ -26,7 +26,6 @@ export class SchoolListComponent implements OnInit {
     this.hasLoadMore = false;
     this.pageOffset = 0;
     this.latestFilter = '';
-    this.addButtonShown = true;
   }
 
   getSchools(searchString?: string, append: boolean = false): void {
@@ -64,4 +63,11 @@ export class SchoolListComponent implements OnInit {
     this.getSchools();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+   if (changes.addButtonVisible.firstChange === false
+     && changes.addButtonVisible.previousValue === false
+     && changes.addButtonVisible.currentValue === true) {
+    this.refreshIfFirstPage();
+   }
+  }
 }

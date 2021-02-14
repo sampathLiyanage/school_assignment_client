@@ -1,6 +1,6 @@
 <div class="table-holder">
   <div class="table-top-bar">
-    <button title="Add School" *ngIf="addButtonShown" (click)="addButtonClick.emit()" id="addButton" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+    <button title="Add School" *ngIf="addButtonVisible" (click)="addButtonClick.emit()" id="addButton" mat-fab color="primary" aria-label="Example icon button with a delete icon">
       <mat-icon>add</mat-icon>
     </button>
     <mat-form-field>
