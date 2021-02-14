@@ -1,5 +1,8 @@
 # School assignment - client
 
+## Prerequest
+Install angular cli (For linux: `sudo npm install -g @angular/cli`)
+
 ## Configuration
 Host the server (https://github.com/sampathLiyanage/school_assignment_server) and configure the variable `SERVER_API_URL` in `src/app/config.service.ts`
 
