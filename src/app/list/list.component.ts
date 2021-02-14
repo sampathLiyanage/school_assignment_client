@@ -82,6 +82,9 @@ export class ListComponent implements OnInit {
           );
           this.addFormShown = false;
           form.resetForm();
+          if (this.pageOffset === 0) {
+            this.getSchools(this.latestFilter, false);
+          }
         });
     }
   }
