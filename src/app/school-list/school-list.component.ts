@@ -18,6 +18,7 @@ export class SchoolListComponent implements OnInit {
   addButtonShown: boolean;
 
   @Output() addButtonClick = new EventEmitter<string>();
+  @Output() filterFocus = new EventEmitter<string>();
 
   constructor(
     private apiService: ApiService) {

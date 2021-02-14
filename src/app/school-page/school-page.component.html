@@ -3,7 +3,7 @@
     <app-add-school (schoolSave)="addFormShown = false;  schoolList.refreshIfFirstPage(); schoolList.addButtonShown = true;" (cancelButtonClick)="addFormShown = false; schoolList.addButtonShown = true;"></app-add-school>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-school-list (addButtonClick)="addFormShown = true; schoolList.addButtonShown = false;" #schoolList></app-school-list>
+    <app-school-list #schoolList (addButtonClick)="addFormShown = true; schoolList.addButtonShown = false;" (filterFocus)="addFormShown = false; schoolList.addButtonShown = true;"></app-school-list>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

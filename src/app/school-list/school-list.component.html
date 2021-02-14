@@ -5,7 +5,7 @@
     </button>
     <mat-form-field>
       <mat-label>Filter</mat-label>
-      <input matInput (keyup)="filterSchools($event)" placeholder="School Name or Address">
+      <input matInput (keyup)="filterSchools($event)" (focus)="filterFocus.emit()" placeholder="School Name or Address">
     </mat-form-field>
   </div>
   <div class="mat-elevation-z1">
