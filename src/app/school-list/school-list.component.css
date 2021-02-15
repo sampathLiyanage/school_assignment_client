@@ -26,3 +26,7 @@ table tr > td {
 .table-holder {
   min-height: 400px;
 }
+
+a {
+  cursor: pointer;
+}
